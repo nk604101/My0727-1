@@ -12,8 +12,15 @@ import android.widget.TextView;
  */
 public class MyAdapter extends BaseAdapter {
     //因為要一個 Context 做 View 類別的 constructor
-    //由呼叫的類別提供他現在的 Context
+    //用本身建構式讓呼叫的類別提供他現在的 Context
+    //用本身建構式讓由呼叫的類別提供他現在的 String
     Context context;
+    String[] str;
+    public MyAdapter(Context c,String[] s)
+    {
+        context = c;
+        str=s;
+    }
     public MyAdapter(Context c)
     {
         context = c;
@@ -46,7 +53,7 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView tv = new TextView(context);
-        tv.setText("Hello"+position);
+        tv.setText(str[position]);
         return tv;
     }
 }
